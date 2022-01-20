@@ -2,6 +2,7 @@ package com.example.todo_jetpackedition
 
 import android.icu.text.CaseMap
 import android.util.Log
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -11,6 +12,7 @@ import androidx.navigation.navArgument
 import com.example.todo_jetpackedition.navigation.Screen
 import com.example.todo_jetpackedition.splash.AnimatedSplash
 
+@ExperimentalMaterialApi
 @Composable
 fun navGraph(navHostController: NavHostController) {
     NavHost(navController = navHostController, startDestination = Screen.splash.route ) {

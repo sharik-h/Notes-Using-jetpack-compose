@@ -12,8 +12,8 @@ interface Dao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(data: Data)
 
-    @Delete
-    suspend fun delete(data: Data)
+    @Query("delete from Detailtable where id=:id")
+    suspend fun delete(id: Int)
 
     @Update
     suspend fun update(data: Data)

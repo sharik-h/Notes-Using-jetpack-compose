@@ -2,6 +2,7 @@ package com.example.todo_jetpackedition
 
 import android.app.Application
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -10,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -88,7 +90,9 @@ fun insert(NavHostController: NavHostController) {
             onValueChange = {newText -> notes = newText},
             label = {Text(text = "Enter some notes.")},
             singleLine = false,
-            modifier = Modifier.fillMaxWidth().height(100.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp),
             trailingIcon = {
                 IconButton(onClick = { notes = ""}) {
                     Icon(imageVector = Icons.Filled.Close, contentDescription = "Clear all")
@@ -151,7 +155,7 @@ fun insert(NavHostController: NavHostController) {
             }
         }
 
-        Button(
+        FloatingActionButton(
             onClick = {
                 NavHostController.navigate(Screen.mainpage.route){
                     popUpTo(Screen.mainpage.route){
@@ -161,15 +165,16 @@ fun insert(NavHostController: NavHostController) {
                 viewmodel.insertdata(Data(title = title, subtitle = subtitle, notes = notes , color = color))
             }
             ,modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
+        .fillMaxWidth()
+        .height(50.dp),
+            backgroundColor = Color(0xFFFFC810)
         ) {
             Text(text = "ADD NEW NOTE", fontSize = 20.sp)
         }
 
     }
-
 }
+
 
 
 
@@ -231,7 +236,9 @@ fun update(NavHostController: NavHostController, Title: String, SubTitle: String
             onValueChange = {newText -> notes = newText},
             label = {Text(text = "Enter some notes.")},
             singleLine = false,
-            modifier = Modifier.fillMaxWidth().height(100.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp),
             trailingIcon = {
                 IconButton(onClick = { notes = ""}) {
                     Icon(imageVector = Icons.Filled.Close, contentDescription = "Clear all")
@@ -294,7 +301,7 @@ fun update(NavHostController: NavHostController, Title: String, SubTitle: String
             }
         }
 
-        Button(
+        FloatingActionButton(
             onClick = {
                 NavHostController.navigate(Screen.mainpage.route){
                     popUpTo(Screen.mainpage.route){
@@ -307,6 +314,7 @@ fun update(NavHostController: NavHostController, Title: String, SubTitle: String
             ,modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
+                .background(Color(0xFFFFC810))
         ) {
             Text(text = "UPDATE NOTE", fontSize = 20.sp)
         }

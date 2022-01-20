@@ -1,6 +1,7 @@
 package com.example.todo_jetpackedition
 
 import android.app.Application
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Text
@@ -8,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,7 +53,8 @@ fun Detail_page(NavHostController: NavHostController, title: String) {
 
             FloatingActionButton(
                 onClick = { NavHostController.navigate(Screen.addpage.passId(title, subtitle, notes)) },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                backgroundColor = Color(0xFFFFC810)
             ) {
                 Text(
                     text = "UPDATE THIS NOTE",

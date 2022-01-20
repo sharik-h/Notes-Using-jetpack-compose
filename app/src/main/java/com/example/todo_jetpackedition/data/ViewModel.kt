@@ -1,15 +1,11 @@
 package com.example.todo_jetpackedition
 
 import android.app.Application
-import android.icu.text.CaseMap
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
@@ -37,9 +33,9 @@ class dataViewModel(application: Application): ViewModel() {
      }
 
 
-     fun delete(data: Data){
+     fun delete(id: Int){
          viewModelScope.launch {
-             db.dataDao().delete(data)
+             db.dataDao().delete(id = id)
          }
     }
 
