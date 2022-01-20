@@ -3,8 +3,11 @@ package com.example.todo_jetpackedition
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -25,44 +28,53 @@ import com.example.todo_jetpackedition.navigation.Screen
 fun sample(navHostController: NavHostController, Title: String, subtitle: String, color: String) {
 
 
-    Row(
-        modifier = Modifier
-            .background(Color.LightGray)
-            .padding(0.dp)
-            .height(80.dp)
-            .clickable(onClick = { navHostController.navigate(Screen.detailpage.passTitle(Title = Title)) })
+
+    Card(
+        elevation = 6.dp,
+        shape = RoundedCornerShape(20.dp)
     ) {
 
-        var imagecolor: Painter = painterResource(id = R.drawable.red_icon)
-
-        if (color == "imagered") {
-            imagecolor = painterResource(id = R.drawable.red_icon)
-        } else if (color == "imageyellow") {
-            imagecolor = painterResource(id = R.drawable.yellow_icon)
-        } else if (color == "imageblue") {
-            imagecolor = painterResource(id = R.drawable.blue_icon)
-        } else if (color == "imagecyan") {
-            imagecolor = painterResource(id = R.drawable.cyan_icon)
-        } else if (color == "imagegreen") {
-            imagecolor = painterResource(id = R.drawable.green_icon)
-        } else if (color == "imageorange") {
-            imagecolor = painterResource(id = R.drawable.orange_icon)
-        }
-
-        IconButton(onClick = { /*TODO*/ }) {
-            Image(painter = imagecolor, contentDescription = "selected tag color", modifier = Modifier
-                .width(20.dp).height(20.dp))
-        }
-
-
-        Column (modifier = Modifier
-            .fillMaxWidth()
+        Row(
+            modifier = Modifier
+                .background(Color.White)
+                .height(80.dp)
+                .clickable(onClick = { navHostController.navigate(Screen.detailpage.passTitle(Title = Title)) })
         ) {
-            Text(text = " "+Title, fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(text = " "+subtitle, fontSize = 20.sp, fontWeight = FontWeight.Light)
+
+            var imagecolor: Painter = painterResource(id = R.drawable.red_icon)
+
+            if (color == "imagered") {
+                imagecolor = painterResource(id = R.drawable.red_icon)
+            } else if (color == "imageyellow") {
+                imagecolor = painterResource(id = R.drawable.yellow_icon)
+            } else if (color == "imageblue") {
+                imagecolor = painterResource(id = R.drawable.blue_icon)
+            } else if (color == "imagecyan") {
+                imagecolor = painterResource(id = R.drawable.cyan_icon)
+            } else if (color == "imagegreen") {
+                imagecolor = painterResource(id = R.drawable.green_icon)
+            } else if (color == "imageorange") {
+                imagecolor = painterResource(id = R.drawable.orange_icon)
             }
 
-     }
+            IconButton(onClick = { /*TODO*/ }) {
+                Image(
+                    painter = imagecolor,
+                    contentDescription = "selected tag color",
+                    modifier = Modifier
+                        .width(20.dp).height(20.dp)
+                )
+            }
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp))
+            {
+                Text(text = " " + Title, fontSize = 30.sp, fontWeight = FontWeight.Normal)
+                Text(text = " " + subtitle, fontSize = 20.sp, fontWeight = FontWeight.Light)
+            }
+
+        }
+    }
+
 }
 
 
