@@ -9,10 +9,9 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.livedata.observeAsState
@@ -45,14 +44,12 @@ fun main_page(NavHostController: NavHostController) {
     Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFE0E0E0))
-                .padding(10.dp)
-        )
+                .background(Color(0xFFE9E8E8))
+                .padding(10.dp) )
         {
 
             val context = LocalContext.current
-            val viewModel: dataViewModel = viewModel(
-                factory = ViewmodelFactory(context.applicationContext as Application))
+            val viewModel: dataViewModel = viewModel(factory = ViewmodelFactory(context.applicationContext as Application))
             val list: List<Data> = viewModel.todoList.observeAsState(listOf()).value
 
             Text(
@@ -71,7 +68,9 @@ fun main_page(NavHostController: NavHostController) {
                   Image(
                       painter = emptylist,
                       contentDescription = "nothing in the list",
-                      modifier = Modifier.height(200.dp).width(200.dp)
+                      modifier = Modifier
+                          .height(200.dp)
+                          .width(200.dp)
                   )
                   Text(text = "Nothing to show", fontSize = 25.sp, color = Color(0xFF7E7E7E))
               }
@@ -98,15 +97,22 @@ fun main_page(NavHostController: NavHostController) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+                .padding(5.dp),
+            horizontalAlignment = Alignment.End,
             verticalArrangement = Arrangement.Bottom
         ) {
-            FloatingActionButton(
-                onClick = { NavHostController.navigate(Screen.addpage.route) },
-                modifier = Modifier.fillMaxWidth(),
-                backgroundColor = Color(0xFFFFC810)) {
-                Text(text = "Add Note", color = Color.White, fontSize = 30.sp)
+//            FloatingActionButton(
+//                onClick = { NavHostController.navigate(Screen.addpage.route) },
+//                modifier = Modifier.fillMaxWidth(),
+//                backgroundColor = Color(0xFFFFC810)) {
+//                Text(text = "Add Note", color = Color.White, fontSize = 30.sp)
+//            }
+            IconButton(onClick = { NavHostController.navigate(Screen.addpage.route) }) {
+                Icon(imageVector = Icons.Outlined.Add ,
+                    contentDescription = "Add new note",
+                    Modifier.size(30.dp),
+                    tint = Color(0xFFFFC810)
+                )
             }
 
         }

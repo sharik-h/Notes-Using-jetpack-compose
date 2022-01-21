@@ -51,7 +51,7 @@ fun sample(navHostController: NavHostController, Title: String, subtitle: String
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(15.dp))
+            .clip(RoundedCornerShape(10.dp))
             .background(Color.Red)
             .swipeable(
                 state = swipable,
@@ -68,28 +68,27 @@ fun sample(navHostController: NavHostController, Title: String, subtitle: String
                         viewModel.delete(id)
                     }
                 },
-                Modifier.padding(vertical = 15.dp, horizontal = 5.dp)
+                Modifier.padding(vertical = 5.dp, horizontal = 5.dp)
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Delete,
                     contentDescription = "to delete",
-                    Modifier
-                        .fillMaxSize()
-                        .padding(7.dp)
+                    Modifier.fillMaxSize().padding(10.dp)
                 )
             }
         }
 
         Box(modifier = Modifier
             .offset { IntOffset(swipable.offset.value.roundToInt(), 0) }
-            .clip(RoundedCornerShape(15.dp))
+            .clip(RoundedCornerShape(10.dp))
             .fillMaxWidth()
-            .height(80.dp))
+            .height(60.dp))
         {
             Row(
                 modifier = Modifier
                     .background(Color.White)
-                    .height(80.dp)
+                    .height(60.dp)
+                    .padding(horizontal = 5.dp)
                     .clickable(onClick = {
                         navHostController.navigate(
                             Screen.detailpage.passTitle(Title = Title)
@@ -98,37 +97,37 @@ fun sample(navHostController: NavHostController, Title: String, subtitle: String
                 verticalAlignment = Alignment.CenterVertically
             )
             {
-                var imagecolor: Painter = painterResource(id = R.drawable.red_icon)
-                if (color == "imagered") {
-                    imagecolor = painterResource(id = R.drawable.red_icon)
-                } else if (color == "imageyellow") {
-                    imagecolor = painterResource(id = R.drawable.yellow_icon)
-                } else if (color == "imageblue") {
-                    imagecolor = painterResource(id = R.drawable.blue_icon)
-                } else if (color == "imagecyan") {
-                    imagecolor = painterResource(id = R.drawable.cyan_icon)
-                } else if (color == "imagegreen") {
-                    imagecolor = painterResource(id = R.drawable.green_icon)
-                } else if (color == "imageorange") {
-                    imagecolor = painterResource(id = R.drawable.orange_icon)
-                }
-                IconButton(onClick = { /*TODO*/ }) {
-                    Image(
-                        painter = imagecolor,
-                        contentDescription = "selected tag color",
-                        modifier = Modifier
-                            .width(20.dp)
-                            .height(20.dp)
-                    )
-                }
+//                var imagecolor: Painter = painterResource(id = R.drawable.red_icon)
+//                if (color == "imagered") {
+//                    imagecolor = painterResource(id = R.drawable.red_icon)
+//                } else if (color == "imageyellow") {
+//                    imagecolor = painterResource(id = R.drawable.yellow_icon)
+//                } else if (color == "imageblue") {
+//                    imagecolor = painterResource(id = R.drawable.blue_icon)
+//                } else if (color == "imagecyan") {
+//                    imagecolor = painterResource(id = R.drawable.cyan_icon)
+//                } else if (color == "imagegreen") {
+//                    imagecolor = painterResource(id = R.drawable.green_icon)
+//                } else if (color == "imageorange") {
+//                    imagecolor = painterResource(id = R.drawable.orange_icon)
+//                }
+//                IconButton(onClick = { /*TODO*/ }) {
+//                    Image(
+//                        painter = imagecolor,
+//                        contentDescription = "selected tag color",
+//                        modifier = Modifier
+//                            .width(10.dp)
+//                            .height(20.dp)
+//                    )
+//                }
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 5.dp)
+                        .padding(horizontal = 15.dp)
                 )
                 {
-                    Text(text = " " + Title, fontSize = 30.sp, fontWeight = FontWeight.Normal)
-                    Text(text = " " + subtitle, fontSize = 20.sp, fontWeight = FontWeight.Light)
+                    Text(text = " " + Title, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Text(text = " " + subtitle, fontSize = 15.sp, fontWeight = FontWeight.Normal, color = Color.DarkGray)
                 }
             }
         }

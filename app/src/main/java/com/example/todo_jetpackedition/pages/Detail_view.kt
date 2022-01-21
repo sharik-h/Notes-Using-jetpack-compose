@@ -225,6 +225,7 @@ fun update(NavHostController: NavHostController, Title: String, SubTitle: String
             onValueChange = {newText -> subtitle = newText},
             label = {Text(text = "Enter a Subtitle if you want one.")},
             modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
             trailingIcon = {
                 IconButton(onClick = { subtitle = ""}) {
                     Icon(imageVector = Icons.Filled.Close, contentDescription = "Clear all")
@@ -314,7 +315,6 @@ fun update(NavHostController: NavHostController, Title: String, SubTitle: String
             ,modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
-                .background(Color(0xFFFFC810))
         ) {
             Text(text = "UPDATE NOTE", fontSize = 20.sp)
         }
